@@ -1,5 +1,4 @@
 
-
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './contactsOps';
 
@@ -12,10 +11,10 @@ const initialState = {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  reducers: {},
+  reducers: {}, // Немає додаткових редюсерів
   extraReducers: builder => {
     builder
-      // fetchContacts
+      // Обробка екшенів fetchContacts
       .addCase(fetchContacts.pending, state => {
         state.loading = true;
         state.error = null;
@@ -28,7 +27,7 @@ const contactsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // addContact
+      // Обробка екшенів addContact
       .addCase(addContact.pending, state => {
         state.loading = true;
         state.error = null;
@@ -41,7 +40,7 @@ const contactsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // deleteContact
+      // Обробка екшенів deleteContact
       .addCase(deleteContact.pending, state => {
         state.loading = true;
         state.error = null;
@@ -76,3 +75,4 @@ export const selectFilteredContacts = createSelector(
 );
 
 export default contactsSlice.reducer;
+

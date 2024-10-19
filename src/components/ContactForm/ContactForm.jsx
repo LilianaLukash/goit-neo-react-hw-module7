@@ -1,8 +1,10 @@
 
-import { useDispatch, useSelector, useState } from 'react-redux';
+import  { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contactsOps';
 import { selectContactsItems } from '../../redux/contactsSlice';
 import styles from './ContactForm.module.css';
+
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -39,7 +41,7 @@ export default function ContactForm() {
       </label>
 
       <label className={styles.label}>
-        Номер
+        Number
         <input
           className={styles.input}
           type="tel"
