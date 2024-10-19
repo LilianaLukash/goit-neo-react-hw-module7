@@ -1,10 +1,12 @@
+// contactsOps.js
+
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Встановлення базового URL для axios
-axios.defaults.baseURL = 'https://6712ba4f6c5f5ced66247dde.mockapi.io/';
+// Встановіть ваш базовий URL для axios
+axios.defaults.baseURL = 'https://your-mockapi-url.mockapi.io';
 
-// Операція для отримання всіх контактів
+// Отримати всі контакти
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
@@ -17,7 +19,7 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-// Операція для додавання нового контакту
+// Додати новий контакт
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async ({ name, number }, thunkAPI) => {
@@ -30,13 +32,13 @@ export const addContact = createAsyncThunk(
   }
 );
 
-// Операція для видалення контакту
+// Видалити контакт
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
       await axios.delete(`/contacts/${contactId}`);
-      return contactId; // Повертаємо ID, щоб видалити контакт зі стану
+      return contactId; // Повертаємо ID для видалення зі стану
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

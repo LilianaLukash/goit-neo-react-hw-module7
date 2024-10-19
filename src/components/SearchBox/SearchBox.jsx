@@ -7,16 +7,16 @@ export default function SearchBox() {
   const dispatch = useDispatch();
   const filter = useSelector(selectNameFilter);
 
-  const handleFilterChange = (e) => {
+  const handleFilterChange = e => {
     dispatch(setFilter(e.target.value));
   };
 
   return (
     <div className={styles.filter}>
-      <label htmlFor="filter">Find contacts by name</label>
+      <label htmlFor="filter">Search by name</label>
       <input
         className={styles.input}
-        type="text"
+        type="text" 
         value={filter}
         onChange={handleFilterChange}
       />
